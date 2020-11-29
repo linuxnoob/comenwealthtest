@@ -28,7 +28,7 @@ public class CustomerService {
 
     public String deleteProduct(Integer id) {
         customerRepository.deleteById(id);
-        return "product berhasil dihapus !! " + id;
+        return "Customer berhasil dihapus !! " + id;
     }
 
     public Customer updateProduct(Customer customer) {
