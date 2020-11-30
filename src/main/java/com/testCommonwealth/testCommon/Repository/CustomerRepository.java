@@ -13,5 +13,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("Select c from Customer c where c.name like %:name% order by c.name asc")
     List<Customer> findByNameIgnoreContaining(String name);
 
+    @Query("Update Customer set isActive= :isActive where id = :id")
+    Customer deleteCustByUpdate(Boolean isActive, String id);
 
 }
