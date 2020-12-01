@@ -40,7 +40,7 @@ public class CustomerContoller {
     public List<Customer>  getCustByName(@RequestParam("name") String name){return customerService.getCustomerByName(name);}
 
     @RequestMapping(path = "/deleteCustByUpdate", method = RequestMethod.POST)
-    public Customer deleteCustByUpdate(@RequestParam ("isActive") Boolean isActive, @RequestParam("id") String id){
+    public Customer deleteCustByUpdate(@RequestParam ("isActive") Boolean isActive, @RequestParam("id") Integer id){
         return customerService.deleteCustByUpdate(isActive, id);
     }
 
@@ -48,5 +48,6 @@ public class CustomerContoller {
     public List<Customer> updateCustList(@RequestBody List<Customer> customerList) throws SQLException {
         return customerService.updateProductList(customerList);
     }
+
 
 }

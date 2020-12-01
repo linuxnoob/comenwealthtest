@@ -5,6 +5,7 @@ import com.testCommonwealth.testCommon.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -62,8 +63,13 @@ public class CustomerService {
         return customerRepository.save(product);
     }
 
-    public Customer deleteCustByUpdate(Boolean isActive, String id){
-        return customerRepository.deleteCustByUpdate(isActive, id);
+    public Customer deleteCustByUpdate(Boolean isActive, Integer id){
+        Customer customer = customerRepository.findById(id).orElse(null);
+        if(customer!=null){
+            customer.setActive(isActive);
+            customerRepository.save(customer);
+        }
+        return customer;
     }
 
 }
